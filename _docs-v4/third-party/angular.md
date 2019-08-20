@@ -159,7 +159,7 @@ export class AppComponent {
 
 ## Emitted Events
 
-A listener can be passed into an Angular component that will be called when something happens. For example, the [dateClick](dateClick) handler is called whenever the user clicks on a date. The way you pass these into the `<full-calendar>` component is different than properties:
+A listener can be passed into an Angular component that will be called when something happens. For example, the [dateClick](dateClick) handler is called whenever the user clicks on a date. Note that you need to install the `@fullcalendar/interaction` plugin to use [dateClick](dateClick) event. The way you pass these into the `<full-calendar>` component is different than properties:
 
 ```
 <full-calendar (dateClick)="handleDateClick($event)" [plugins]="calendarPlugins"></full-calendar>
@@ -168,9 +168,11 @@ A listener can be passed into an Angular component that will be called when some
 They are written `(likethis)`. Then, in the JavaScript, write your handler method:
 
 ```js
+import interactionPlugin from '@fullcalendar/daygrid;
+
 export class AppComponent {
 
-  calendarPlugins = [dayGridPlugin];
+  calendarPlugins = [dayGridPlugin, interactionPlugin];
 
   handleDateClick(arg) { // handler method
     alert(arg.dateStr);
